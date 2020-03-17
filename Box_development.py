@@ -7,8 +7,13 @@ import math
 class Container:
     def __init__(self,Length):
         self.Length=Length
-        self.momentum=0
-        self.area=0
+        self.pressure=0
+        self.oxygen_pressure=0
+        self.nitrogen_pressure=0
+        self.collision_no=0
+        self.total_momentum=0
+        self.nitrogen_momentum=0
+        self.oxygen_momentum=0
 
     def check(self,position):
         wall_collision, axis=False, "nil"
@@ -44,6 +49,13 @@ class Container:
         if momentum_change < 0:
             momentum_change=-1*momentum_change
         particle.velocity=velocity
-
-        self.momentum+=momentum_change
-        self.area+=math.pi*((particle.radius/2)**2)
+        self.collision_no+=1
+        pressure=(particle.mass*(np.linalg.norm(particle.velocity))**2)/((math.pi*(particle.radius**2))*self.Length)
+        self.total_momentum+=momentum_change
+        self.pressure+=pressure
+        if particle.type=="Oxygen":
+            self.oxygen_pressure+=pressure
+            self.oxygen_momentum+=momentum_change
+        if particle.type=="Nitrogen":
+            self.nitrogen_pressure+=pressure
+            self.nitrogen_momentum+=momentum_change

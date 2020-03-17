@@ -38,7 +38,8 @@ def generate_oxygen(N,particle_list,T,box):
     return particle_list
 
 def generate_nitrogen(N,particle_list,T,box):
-    while len(particle_list) < N:
+    n=len(particle_list)
+    while len(particle_list) < N+n:
         initial=create(4.65e-26,300e-12,T,box)
         new_particle=Nitrogen(initial[0],initial[1],0)
         if len(particle_list)==0:

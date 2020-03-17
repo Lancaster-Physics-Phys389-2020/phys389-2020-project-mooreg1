@@ -1,12 +1,13 @@
 import numpy as np
 
 class Particle:
-    def __init__(self, initialPosition, initialVelocity, radius, mass,name):
+    def __init__(self, initialPosition, initialVelocity, radius, mass,name,type):
         self.velocity=np.array(initialVelocity)
         self.position=np.array(initialPosition)
         self.radius=radius
         self.mass=mass
         self.name=name
+        self.type=type
 
     def __repr__(self):
         return 'Radius: %10s, Mass: %.5e, Position: %s, Velocity: %s, Name: %s'%(self.radius,self.mass,self.position,self.velocity,self.name)
@@ -27,20 +28,24 @@ class Oxygen(Particle):
     def __init__(self,initialPosition,initialVelocity,name):
         mass=5.32e-26
         radius=292e-12
-        super().__init__(initialPosition, initialVelocity, radius, mass,name)
+        type="Oxygen"
+        super().__init__(initialPosition, initialVelocity, radius, mass,name,type)
         self.velocity=np.array(initialVelocity)
         self.position=np.array(initialPosition)
         self.radius=radius
         self.mass=mass
         self.name=name
+        self.type="Oxygen"
 
 class Nitrogen(Particle):
     def __init__(self,initialPosition,initialVelocity,name):
         mass=4.65e-26
         radius=300e-12
-        super().__init__(initialPosition, initialVelocity, radius, mass,name)
+        type="Nitrogen"
+        super().__init__(initialPosition, initialVelocity, radius, mass,name,type)
         self.velocity=np.array(initialVelocity)
         self.position=np.array(initialPosition)
         self.radius=radius
         self.mass=mass
         self.name=name
+        self.type="Nitrogen"

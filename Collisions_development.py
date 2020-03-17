@@ -2,7 +2,7 @@ import numpy as np
 from Particle_development import Particle
 from Particle_development import Oxygen
 from Particle_development import Nitrogen
-from Box import Container
+from Box_development import Container
 
 class method:
     def __init__(self,particle_list,Box):
@@ -35,7 +35,6 @@ class method:
             if particle_check[0]==True:
                 other_particle_to_collide=self.particles[particle_check[1]]
                 self.collide(other_particle_to_collide,i)
-                print("Collision")
             wall_check=self.box.check(i.position)
             if wall_check[0]==True:
                 self.box.collide(i,wall_check[1],delta_t)
